@@ -1,0 +1,35 @@
+{
+  "name": "sqlbars",
+  "version": "0.1.0",
+  "description": "A customized Handlebars instance for generating SQL",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/somesocks/sqlbars.git"
+  },
+  "keywords": [
+    "streams"
+  ],
+  "author": "James Larsen (somesocks@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/somesocks/sqlbars/issues"
+  },
+  "homepage": "https://github.com/somesocks/sqlbars",
+  "devDependencies": {
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^13.7.7",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "callback-patterns": "^2.4.1",
+    "eslint": "^5.5.0",
+    "jsdoc-to-markdown": "^4.0.1",
+    "mocha": "^7.1.0",
+    "typescript": "^3.5.3",
+    "vet": "^2.6.0"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.3"
+  }
+}
