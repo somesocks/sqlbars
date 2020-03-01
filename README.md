@@ -10,3 +10,10 @@ With this wrapper around Handlebars, you can now do so with a little more safety
 
 ## API
 
+<a name="sqlbars"></a>
+
+## sqlbars : <code>object</code>
+**Kind**: global namespace  
+
+* * *
+

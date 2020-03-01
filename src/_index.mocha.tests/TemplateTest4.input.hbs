@@ -1,0 +1,11 @@
+SELECT
+  *
+FROM
+  {{sql-id "foo"}}
+WHERE
+  (1 = 1)
+  {{#if names}}
+  AND {{sql-id "names"}} IN {{sql names}}
+  {{/if}}
+{{sql-limit limit}}
+;

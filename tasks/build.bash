@@ -57,8 +57,8 @@ _buildJS () {
 	rsync \
 		--update \
 		--recursive \
+		--exclude='*.ts' \
 		--include='*' \
-		--exclude='.ts*' \
 		$SRC_DIR/ \
 		$BUILD_DIR
 		# --itemize-changes \
@@ -110,7 +110,7 @@ _cleanup () {
 trap _cleanup ERR EXIT
 
 _makeBuildDir
-# _buildJS
+_buildJS
 _buildTSC
 _buildExtras
 _writeBuildToDist

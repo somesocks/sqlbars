@@ -2,9 +2,9 @@
 	"compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": true,
     "outDir": "./dist",
 		"lib": [ "ES6", "DOM" ],
+		"declaration": true,
 
     "strict": true,
     "noImplicitAny": false,
