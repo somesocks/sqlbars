@@ -13,7 +13,7 @@ var Test = AssertionTest_1.default()
     data: {
         val: 12,
     },
-    expected: 'LIMIT 12',
+    expected: '12',
 }); })
     .prepare(function (next, setup) { return next(null, setup); })
     .execute(function (next, _a) {

@@ -28,13 +28,6 @@ function _escape(val) {
         }
     }
 }
-/**
- *
- * `{{sql-id}}` safely builds a table or column name from props or constants,
- *
- * @name `sql-id`
- * @memberof sqlbars
-*/
 function sqlID() {
     switch (arguments.length) {
         case 0:

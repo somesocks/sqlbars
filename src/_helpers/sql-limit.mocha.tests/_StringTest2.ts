@@ -14,7 +14,7 @@ const Test : any = AssertionTest()
         data: {
           val: '-1',
         },
-        expected: 'LIMIT 999999999999',
+        expected: '999999999999',
       }
     )
   )

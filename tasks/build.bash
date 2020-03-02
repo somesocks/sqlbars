@@ -66,18 +66,18 @@ _buildJS () {
 
 _buildExtras () {
 	echo '[INFO] packing extras into build dir'
-	echo '[INFO] building `README.md`'
-	( \
-		find $BUILD_DIR/ -name *.js | \
-		sort -t/ -k2.2 -k2.1 | \
-		xargs \
-			jsdoc2md \
-			--separators \
-			--param-list-format list \
-			--property-list-format list \
-			--member-index-format list \
-			--template README.hbs --files \
-	) > README.md
+	# echo '[INFO] building `README.md`'
+	# ( \
+	# 	find $BUILD_DIR/ -name *.js | \
+	# 	sort -t/ -k2.2 -k2.1 | \
+	# 	xargs \
+	# 		jsdoc2md \
+	# 		--separators \
+	# 		--param-list-format list \
+	# 		--property-list-format list \
+	# 		--member-index-format list \
+	# 		--template README.hbs --files \
+	# ) > README.md
 	echo '[INFO] packing `README.md`'
 	cp ./README.md $BUILD_DIR/
 	echo '[INFO] packing `.npmignore`'

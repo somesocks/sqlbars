@@ -13,7 +13,7 @@ var Test = AssertionTest_1.default()
     data: {
         val: -1,
     },
-    expected: 'LIMIT 999999999999',
+    expected: '999999999999',
 }); })
     .prepare(function (next, setup) { return next(null, setup); })
     .execute(function (next, _a) {

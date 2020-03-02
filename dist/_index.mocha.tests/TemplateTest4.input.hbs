@@ -7,5 +7,5 @@ WHERE
   {{#if names}}
   AND {{sql-id "names"}} IN {{sql names}}
   {{/if}}
-{{sql-limit limit}}
+LIMIT {{sql-limit limit}}
 ;

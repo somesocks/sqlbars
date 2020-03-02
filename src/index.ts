@@ -1,5 +1,3 @@
-/** @namespace sqlbars */
-
 import Handlebars from 'handlebars';
 
 import sql from './_helpers/sql';
