@@ -2,6 +2,11 @@
 
 It's Handlebars! But for SQL!
 
+```
+SELECT
+
+```
+
 ## Why?
 
 Sometimes, you have to write some SQL that just doesn't map well to an ORM.
@@ -91,3 +96,37 @@ If `{{sql-limit}}` is given a negative number, it assumes that means no limit, a
 `{{sql-offset}}` is a utility to safely parse its argument into a offset value, that will always be a non-negative integer.
 `{{sql-offset}}` does not generate the OFFSET keyword, just the numberical value.  This is so you can use it as a number in checks, or set variable values.
 If `{{sql-offset}}` is given a negative number, it throws an error.
+
+
+### `{{and}}`
+
+```
+  {{#if (and a b)}}foo{{/if}} // with data { a: true, b: true } result is foo
+  {{#if (and a b)}}foo{{/if}} // with data { a: true, b: false } result is empty string
+  {{#if (and a b)}}foo{{/if}} // with data { a: false, b: true } result is empty string
+  {{#if (and a b)}}foo{{/if}} // with data { a: false, b: false } result is empty string
+```
+
+`{{and}}` is a logical operator that takes any number of arguments, coerces them into booleans, and returns the logical and of all of them.
+
+
+### `{{or}}`
+
+```
+  {{#if (or a b)}}foo{{/if}} // with data { a: true, b: true } result is foo
+  {{#if (or a b)}}foo{{/if}} // with data { a: true, b: false } result is foo
+  {{#if (or a b)}}foo{{/if}} // with data { a: false, b: true } result is foo
+  {{#if (or a b)}}foo{{/if}} // with data { a: false, b: false } result is empty string
+```
+
+`{{or}}` is a logical operator that takes any number of arguments, coerces them into booleans, and returns the logical or of all of them.
+
+
+### `{{not}}`
+
+```
+  {{#if (not a)}}foo{{/if}} // with data { a: true } result is empty string
+  {{#if (not a)}}foo{{/if}} // with data { a: false } result is foo
+```
+
+`{{not}}` is a logical operator that takes one argument, coerces it into a boolean, and returns the logical not of it.
