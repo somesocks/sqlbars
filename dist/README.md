@@ -98,6 +98,25 @@ If `{{sql-limit}}` is given a negative number, it assumes that means no limit, a
 If `{{sql-offset}}` is given a negative number, it throws an error.
 
 
+### `{{sql-order}}`
+
+```
+  {{sql-order "foo"}} // result is `foo` ASC
+  {{sql-order "+foo"}} // result is `foo` ASC
+  {{sql-order "-foo"}} // result is `foo` DESC
+
+  {{sql-order "+foo" "-bar"}} // result is `foo` ASC, `bar` DESC
+
+  {{sql-order val}} // if val is ['+foo', '-bar'], result is `foo` ASC, `bar` DESC
+
+  {{sql-order val "cab"}} // if val is ['+foo', '-bar'], result is `foo` ASC, `bar` DESC, `cab` ASC
+```
+
+`{{sql-order}}` is a utility to generate a sequence of properties to order by.
+`{{sql-order}}` does not generate the ORDER BY keywords, just the ordering sequence.
+`{{sql-order}}` accepts any number of strings or arrays, and flattens them out into a single ordering sequence
+
+
 ### `{{and}}`
 
 ```

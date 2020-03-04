@@ -8,6 +8,7 @@ import sql from './sql';
 import sqlID from './sql-id';
 import sqlLimit from './sql-limit';
 import sqlOffset from './sql-offset';
+import sqlOrder from './sql-order';
 
 const helpers = {
   'and': and,
@@ -18,6 +19,7 @@ const helpers = {
   'sql-id': sqlID,
   'sql-limit': sqlLimit,
   'sql-offset': sqlOffset,
+  'sql-order': sqlOrder,
 };
 
 export default helpers;

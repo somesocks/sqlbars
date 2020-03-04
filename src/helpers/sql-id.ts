@@ -23,7 +23,7 @@ function _escape(val) {
   }
 }
 
-function sqlID(this : any) {
+function sqlID(this : any, ...args : any[]) {
 	switch (arguments.length) {
 		case 0:
 		case 1: {

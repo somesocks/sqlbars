@@ -7,5 +7,6 @@ WHERE
   {{#if names}}
   AND {{sql-id "names"}} IN {{sql names}}
   {{/if}}
+ORDER BY {{sql-order "+foo" "-bar"}}
 LIMIT {{sql-limit limit}}
 ;

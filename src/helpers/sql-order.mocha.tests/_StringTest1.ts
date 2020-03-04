@@ -5,15 +5,16 @@ import AssertionTest from 'callback-patterns/testing/AssertionTest';
 import SQLBars from '../../';
 
 const Test : any = AssertionTest()
-  .describe('can escape strings to id')
+  .describe('can order string')
   .setup(
     (next) => next(
       null,
       {
-        template: SQLBars.compile('{{sql-id "foo"}}'),
+        template: SQLBars.compile('{{sql-order val}}'),
         data: {
+          val: 'foo',
         },
-        expected: '`foo`',
+        expected: '`foo` ASC',
       }
     )
   )

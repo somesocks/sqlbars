@@ -7,11 +7,13 @@ var Assert_1 = __importDefault(require("callback-patterns/Assert"));
 var AssertionTest_1 = __importDefault(require("callback-patterns/testing/AssertionTest"));
 var __1 = __importDefault(require("../../"));
 var Test = AssertionTest_1.default()
-    .describe('can escape strings to id')
+    .describe('can order string')
     .setup(function (next) { return next(null, {
-    template: __1.default.compile('{{sql-id "foo"}}'),
-    data: {},
-    expected: '`foo`',
+    template: __1.default.compile('{{sql-order val}}'),
+    data: {
+        val: '+foo',
+    },
+    expected: '`foo` ASC',
 }); })
     .prepare(function (next, setup) { return next(null, setup); })
     .execute(function (next, _a) {
