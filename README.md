@@ -149,3 +149,4 @@ If `{{sql-offset}}` is given a negative number, it throws an error.
 ```
 
 `{{not}}` is a logical operator that takes one argument, coerces it into a boolean, and returns the logical not of it.
+
