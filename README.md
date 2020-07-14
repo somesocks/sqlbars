@@ -2,11 +2,6 @@
 
 It's Handlebars! But for SQL!
 
-```
-SELECT
-
-```
-
 ## Why?
 
 Sometimes, you have to write some SQL that just doesn't map well to an ORM.
