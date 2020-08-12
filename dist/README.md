@@ -2,11 +2,6 @@
 
 It's Handlebars! But for SQL!
 
-```
-SELECT
-
-```
-
 ## Why?
 
 Sometimes, you have to write some SQL that just doesn't map well to an ORM.
@@ -149,3 +144,4 @@ If `{{sql-offset}}` is given a negative number, it throws an error.
 ```
 
 `{{not}}` is a logical operator that takes one argument, coerces it into a boolean, and returns the logical not of it.
+

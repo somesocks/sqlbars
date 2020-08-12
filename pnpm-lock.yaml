@@ -1,5 +1,6 @@
 dependencies:
   handlebars: 4.7.3
+  handlebars-helper-import: 2.4.0
 devDependencies:
   '@types/mocha': 7.0.1
   '@types/node': 13.7.7
@@ -52,6 +53,7 @@ packages:
       functional-red-black-tree: 1.0.1
       regexpp: 3.0.0
       tsutils: 3.17.1_typescript@3.8.3
+      typescript: 3.8.3
     dev: true
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -85,6 +87,7 @@ packages:
       '@typescript-eslint/typescript-estree': 2.21.0_typescript@3.8.3
       eslint: 5.16.0
       eslint-visitor-keys: 1.1.0
+      typescript: 3.8.3
     dev: true
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -105,6 +108,7 @@ packages:
       lodash: 4.17.15
       semver: 6.3.0
       tsutils: 3.17.1_typescript@3.8.3
+      typescript: 3.8.3
     dev: true
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -831,6 +835,10 @@ packages:
       node: '>=4.x'
     resolution:
       integrity: sha512-qBr4OuELkhPenW6goKVXiv47US3clb3/IbuWF9KNKEijAy9oeHxU9IgzjvJhHkUzhaj7rOUD7+YGWqUjLp5oSA==
+  /handlebars-helper-import/2.4.0:
+    dev: false
+    resolution:
+      integrity: sha1-q7RpHAKCLd0wKyvlH0ERL3JK+/M=
   /handlebars/4.7.3:
     dependencies:
       neo-async: 2.6.1
@@ -1935,6 +1943,7 @@ specifiers:
   callback-patterns: ^2.4.1
   eslint: ^5.5.0
   handlebars: ^4.7.3
+  handlebars-helper-import: ^2.4.0
   jsdoc-to-markdown: ^4.0.1
   mocha: ^7.1.0
   typescript: ^3.5.3
