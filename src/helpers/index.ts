@@ -6,6 +6,7 @@ import not from './not';
 
 import sql from './sql';
 import sqlID from './sql-id';
+import sqlList from './sql-list';
 import sqlLimit from './sql-limit';
 import sqlOffset from './sql-offset';
 import sqlOrder from './sql-order';
@@ -16,6 +17,7 @@ const helpers = {
   'not': not,
 
   'sql': sql,
+  'sql-list': sqlList,
   'sql-id': sqlID,
   'sql-limit': sqlLimit,
   'sql-offset': sqlOffset,

@@ -3,6 +3,7 @@ import or from './or';
 import not from './not';
 import sql from './sql';
 import sqlID from './sql-id';
+import sqlList from './sql-list';
 import sqlLimit from './sql-limit';
 import sqlOffset from './sql-offset';
 import sqlOrder from './sql-order';
@@ -11,6 +12,7 @@ declare const helpers: {
     or: typeof or;
     not: typeof not;
     sql: typeof sql;
+    'sql-list': typeof sqlList;
     'sql-id': typeof sqlID;
     'sql-limit': typeof sqlLimit;
     'sql-offset': typeof sqlOffset;
