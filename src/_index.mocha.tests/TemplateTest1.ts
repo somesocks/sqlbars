@@ -10,7 +10,7 @@ import fs from 'fs';
 const TEMPLATE_FILE = path.join(__dirname, 'TemplateTest1.input.hbs');
 const EXPECTED_FILE = path.join(__dirname, 'TemplateTest1.expected.hbs');
 
-const Test : any = AssertionTest()
+const Test: any = AssertionTest()
   .describe('template test 1')
   .setup(
     (next) => next(

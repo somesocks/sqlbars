@@ -7,18 +7,19 @@ import SQLBars from '../';
 import path from 'path';
 import fs from 'fs';
 
-const TEMPLATE_FILE = path.join(__dirname, 'TemplateTest2.input.hbs');
-const EXPECTED_FILE = path.join(__dirname, 'TemplateTest2.expected.hbs');
+const TEMPLATE_FILE = path.join(__dirname, 'PerformanceTest1.input.hbs');
+const EXPECTED_FILE = path.join(__dirname, 'PerformanceTest1.expected.hbs');
 
 const Test: any = AssertionTest()
-  .describe('template test 2')
+  .describe('performance test 1')
   .setup(
     (next) => next(
       null,
       {
         template: SQLBars.compile(fs.readFileSync(TEMPLATE_FILE, 'utf8')),
         data: {
-          names: ["alice", "bob", "c\"harlie"],
+          // names: ["alice", "bob", "c\"harlie"],
+          limit: 12,
         },
         expected: fs.readFileSync(EXPECTED_FILE, 'utf8'),
       }
@@ -26,10 +27,13 @@ const Test: any = AssertionTest()
   )
   .prepare((next, setup) => next(null, setup))
   .execute(
-    (next, { template, data }) => next(
-      null,
-      template(data)
-    )
+    (next, { template, data }) => {
+      let res;
+      for(let i=0; i<10000; i++) {
+        res = template(data);
+      }
+      next(null, res);
+    }
   )
   .verify(
     AssertionTest.VerifyErrorWasNotThrown,
