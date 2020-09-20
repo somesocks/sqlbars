@@ -60,26 +60,26 @@ When given multiple arguments, or a single argument that is an array, the identi
 ### `{{sql-list}}`
 
 ```
-  {{sql null}} // result is NULL
-  {{sql val}} // with data { val: null }, result is NULL
-  {{sql val}} // with data { val: undefined }, result is NULL
+  {{sql-list null}} // result is NULL
+  {{sql-list val}} // with data { val: null }, result is NULL
+  {{sql-list val}} // with data { val: undefined }, result is NULL
 
-  {{sql true}} // result is TRUE
-  {{sql false}} // result is FALSE
-  {{sql val}} // with data { val: true }, result is TRUE
-  {{sql val}} // with data { val: false }, result is FALSE
+  {{sql-list true}} // result is TRUE
+  {{sql-list false}} // result is FALSE
+  {{sql-list val}} // with data { val: true }, result is TRUE
+  {{sql-list val}} // with data { val: false }, result is FALSE
 
-  {{sql 1.0}} // result is 1.0
-  {{sql val}} // with data { val: 1.0 }, result is 1.0
+  {{sql-list 1.0}} // result is 1.0
+  {{sql-list val}} // with data { val: 1.0 }, result is 1.0
 
-  {{sql "foo"}} // result is 'foo'
-  {{sql val}} // with data { val: "foo" }, result is 'foo'
+  {{sql-list "foo"}} // result is 'foo'
+  {{sql-list val}} // with data { val: "foo" }, result is 'foo'
 
-  {{sql "'foo'"}} // result is '\'foo\''
-  {{sql val}} // with data { val: "'foo'" }, result is '\'foo\''
+  {{sql-list "'foo'"}} // result is '\'foo\''
+  {{sql-list val}} // with data { val: "'foo'" }, result is '\'foo\''
 
-  {{sql 1 2 3}} // result is 1, 2, 3
-  {{sql val}} // with data { val: [1, 2, 3] }, result is 1, 2, 3
+  {{sql-list 1 2 3}} // result is 1, 2, 3
+  {{sql-list val}} // with data { val: [1, 2, 3] }, result is 1, 2, 3
 ```
 
 `{{sql-list}}` converts all values passed in to SQL-compatible types in an almost identical way as `{{sql}}`,
