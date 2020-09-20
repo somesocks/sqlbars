@@ -52,6 +52,35 @@ and escapes any special characters as needed
 `{{sql-id}}` is a utility to create a safely escaped SQL identifier (a database, table, or column name).
 When given multiple arguments, or a single argument that is an array, the identifiers are joined together with '.'
 
+### `{{sql-list}}`
+
+```
+  {{sql null}} // result is NULL
+  {{sql val}} // with data { val: null }, result is NULL
+  {{sql val}} // with data { val: undefined }, result is NULL
+
+  {{sql true}} // result is TRUE
+  {{sql false}} // result is FALSE
+  {{sql val}} // with data { val: true }, result is TRUE
+  {{sql val}} // with data { val: false }, result is FALSE
+
+  {{sql 1.0}} // result is 1.0
+  {{sql val}} // with data { val: 1.0 }, result is 1.0
+
+  {{sql "foo"}} // result is 'foo'
+  {{sql val}} // with data { val: "foo" }, result is 'foo'
+
+  {{sql "'foo'"}} // result is '\'foo\''
+  {{sql val}} // with data { val: "'foo'" }, result is '\'foo\''
+
+  {{sql 1 2 3}} // result is 1, 2, 3
+  {{sql val}} // with data { val: [1, 2, 3] }, result is 1, 2, 3
+```
+
+`{{sql-list}}` converts all values passed in to SQL-compatible types in an almost identical way as `{{sql}}`,
+with the exception of not adding the outermost set of parentheses to lists of results.  This is useful for building lists for certain sql statements,
+such as `INSERT VALUES ...`;
+
 
 ### `{{sql-limit}}`
 
@@ -144,4 +173,3 @@ If `{{sql-offset}}` is given a negative number, it throws an error.
 ```
 
 `{{not}}` is a logical operator that takes one argument, coerces it into a boolean, and returns the logical not of it.
-
