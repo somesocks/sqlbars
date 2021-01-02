@@ -18,15 +18,15 @@ const ESCAPE_MAP = {
 function escapeChar(char) { return ESCAPE_MAP[char]; }
 
 function _escape(val) {
-  const type = typeof val;
+	const type = typeof val;
 
-  switch (type) {
-    case 'undefined': { return 'NULL'; }
-    case 'boolean': { return (val) ? 'TRUE' : 'FALSE'; }
-    case 'number': { return ''+val; }
-    case 'string': { return new Handlebars.SafeString('\'' + val.replace(ESCAPE_REGEX, escapeChar) + '\''); }
-    case 'object' : {
-      if (val == null) {
+	switch (type) {
+		case 'undefined': { return 'NULL'; }
+		case 'boolean': { return (val) ? 'TRUE' : 'FALSE'; }
+		case 'number': { return ''+val; }
+		case 'string': { return new Handlebars.SafeString('\'' + val.replace(ESCAPE_REGEX, escapeChar) + '\''); }
+		case 'object' : {
+			if (val == null) {
 				return 'NULL';
 			} else if (Array.isArray(val)) {
 				let sql = '(';
@@ -38,9 +38,9 @@ function _escape(val) {
 			} else {
 				throw new Error('cannot escape expression of type object');
 			}
-    }
-    default: { throw new Error('cannot escape expression of type ' + type); }
-  }
+		}
+		default: { throw new Error('cannot escape expression of type ' + type); }
+	}
 }
 
 function sql(this : any) {

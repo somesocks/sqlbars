@@ -7,18 +7,18 @@ import StringTest2 from './_StringTest2';
 import StringTest3 from './_StringTest3';
 
 const TESTS = [
-  StringTest1,
-  StringTest2,
-  StringTest3,
+	StringTest1,
+	StringTest2,
+	StringTest3,
 
-  ArrayTest1,
-  ArrayTest2,
+	ArrayTest1,
+	ArrayTest2,
 
 ];
 
 describe(
-  __filename,
-  () => TESTS.forEach(
-    (test, i) => it(test.label || `test ${i}`, test)
-  )
+	__filename,
+	() => TESTS.forEach(
+		(test, i) => it(test.label || `test ${i}`, test)
+	)
 )

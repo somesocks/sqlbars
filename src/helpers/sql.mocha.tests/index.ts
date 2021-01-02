@@ -15,26 +15,26 @@ import StringTest4 from './_StringTest4';
 import StringTest5 from './_StringTest5';
 
 const TESTS = [
-  UndefinedTest,
-  NullTest,
+	UndefinedTest,
+	NullTest,
 
-  BooleanTest1,
-  BooleanTest2,
+	BooleanTest1,
+	BooleanTest2,
 
-  StringTest1,
-  StringTest2,
-  StringTest3,
-  StringTest4,
-  StringTest5,
+	StringTest1,
+	StringTest2,
+	StringTest3,
+	StringTest4,
+	StringTest5,
 
-  ArrayTest1,
-  ArrayTest2,
+	ArrayTest1,
+	ArrayTest2,
 
 ];
 
 describe(
-  __filename,
-  () => TESTS.forEach(
-    (test, i) => it(test.label || `test ${i}`, test)
-  )
+	__filename,
+	() => TESTS.forEach(
+		(test, i) => it(test.label || `test ${i}`, test)
+	)
 )

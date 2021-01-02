@@ -4,12 +4,12 @@ import Handlebars from 'handlebars';
 const ESCAPE_REGEX = /`/g;
 
 function _escape(val) {
-  const type = typeof val;
+	const type = typeof val;
 
-  switch (type) {
-    case 'string': { return new Handlebars.SafeString('`' + val.replace(ESCAPE_REGEX, '``') + '`'); }
-    case 'object' : {
-      if (Array.isArray(val)) {
+	switch (type) {
+		case 'string': { return new Handlebars.SafeString('`' + val.replace(ESCAPE_REGEX, '``') + '`'); }
+		case 'object' : {
+			if (Array.isArray(val)) {
 				let sql = '';
 				for (let i=0; i<val.length;i++) {
 					sql += (i === 0 ? '' : '.') + _escape(val[i])
@@ -18,9 +18,9 @@ function _escape(val) {
 			} else {
 				throw new Error('cannot escape expression of type object');
 			}
-    }
-    default: { throw new Error('cannot escape expression of type ' + type); }
-  }
+		}
+		default: { throw new Error('cannot escape expression of type ' + type); }
+	}
 }
 
 function sqlID(this : any, ...args : any[]) {
