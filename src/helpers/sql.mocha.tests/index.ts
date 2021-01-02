@@ -5,6 +5,8 @@ import NullTest from './_NullTest';
 import BooleanTest1 from './_BooleanTest1';
 import BooleanTest2 from './_BooleanTest2';
 
+import DateTest1 from './_DateTest1';
+
 import ArrayTest1 from './_ArrayTest1';
 import ArrayTest2 from './_ArrayTest2';
 
@@ -27,6 +29,8 @@ const TESTS = [
 	StringTest4,
 	StringTest5,
 
+	DateTest1,
+	
 	ArrayTest1,
 	ArrayTest2,
 

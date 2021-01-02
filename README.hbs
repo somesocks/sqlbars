@@ -36,6 +36,8 @@ With this wrapper around Handlebars, you can now do so with a little more safety
   {{sql "'foo'"}} // result is '\'foo\''
   {{sql val}} // with data { val: "'foo'" }, result is '\'foo\''
 
+  {{sql val}} // with data { val: new Date(0) }, result is '1970-01-01 00:00:00.000'
+
   {{sql 1 2 3}} // result is (1, 2, 3)
   {{sql val}} // with data { val: [1, 2, 3] }, result is (1, 2, 3)
 ```
@@ -43,6 +45,8 @@ With this wrapper around Handlebars, you can now do so with a little more safety
 `{{sql}}` converts all values passed in to SQL-compatible types,
 and escapes any special characters as needed
 
+NOTE: Date objects are assumed to be UTC datetimes, and converted to the equivalent ISO9075 date string.
+If you need dates that are formatted differently, pre-convert them to strings before passing them to sqlbars.
 
 ### `{{sql-id}}`
 

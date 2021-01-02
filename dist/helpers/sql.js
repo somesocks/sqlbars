@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var handlebars_1 = __importDefault(require("handlebars"));
+var dates_1 = require("../utils/dates");
 var ESCAPE_REGEX = /[\0\b\t\n\r\x1a\"\'\\]/g;
 var ESCAPE_MAP = {
     '\0': '\\0',
@@ -43,6 +44,9 @@ function _escape(val) {
                 }
                 sql_1 += ')';
                 return new handlebars_1.default.SafeString(sql_1);
+            }
+            else if (val instanceof Date) {
+                return new handlebars_1.default.SafeString('\'' + dates_1.toISO9075String(val) + '\'');
             }
             else {
                 throw new Error('cannot escape expression of type object');

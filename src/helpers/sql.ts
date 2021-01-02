@@ -1,6 +1,8 @@
 
 import Handlebars from 'handlebars';
 
+import { toISO9075String } from '../utils/dates';
+
 const ESCAPE_REGEX = /[\0\b\t\n\r\x1a\"\'\\]/g;
 const ESCAPE_MAP = {
 	'\0' : '\\0',
@@ -35,6 +37,8 @@ function _escape(val) {
 				}
 				sql += ')';
 				return new Handlebars.SafeString(sql);
+			} else if (val instanceof Date) {
+				return new Handlebars.SafeString('\'' + toISO9075String(val) + '\'');
 			} else {
 				throw new Error('cannot escape expression of type object');
 			}

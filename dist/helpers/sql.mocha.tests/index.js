@@ -7,6 +7,7 @@ var _UndefinedTest_1 = __importDefault(require("./_UndefinedTest"));
 var _NullTest_1 = __importDefault(require("./_NullTest"));
 var _BooleanTest1_1 = __importDefault(require("./_BooleanTest1"));
 var _BooleanTest2_1 = __importDefault(require("./_BooleanTest2"));
+var _DateTest1_1 = __importDefault(require("./_DateTest1"));
 var _ArrayTest1_1 = __importDefault(require("./_ArrayTest1"));
 var _ArrayTest2_1 = __importDefault(require("./_ArrayTest2"));
 var _StringTest1_1 = __importDefault(require("./_StringTest1"));
@@ -24,6 +25,7 @@ var TESTS = [
     _StringTest3_1.default,
     _StringTest4_1.default,
     _StringTest5_1.default,
+    _DateTest1_1.default,
     _ArrayTest1_1.default,
     _ArrayTest2_1.default,
 ];
