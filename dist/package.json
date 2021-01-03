@@ -1,6 +1,6 @@
 {
   "name": "sqlbars",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A customized Handlebars instance for generating SQL",
   "main": "index.js",
   "scripts": {},
@@ -28,11 +28,12 @@
     "eslint": "^5.5.0",
     "jsdoc-to-markdown": "^4.0.1",
     "mocha": "^7.1.0",
-    "typescript": "^3.5.3",
-    "vet": "^2.6.0"
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "handlebars": "^4.7.3",
-    "handlebars-helper-import": "^2.4.0"
+    "handlebars-helper-import": "^2.4.0",
+    "sequences": "^2.3.1",
+    "vet": "4.3.1"
   }
 }

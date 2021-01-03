@@ -47,7 +47,7 @@ function _escape(val) {
 	}
 }
 
-function sql(this : any) {
+function sql(this : any, ...args: any[]) {
 	switch (arguments.length) {
 		case 0:
 		case 1: {

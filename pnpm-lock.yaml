@@ -1,6 +1,8 @@
 dependencies:
   handlebars: 4.7.3
   handlebars-helper-import: 2.4.0
+  sequences: 2.3.1
+  vet: 4.3.1
 devDependencies:
   '@types/mocha': 7.0.1
   '@types/node': 13.7.7
@@ -11,8 +13,7 @@ devDependencies:
   jsdoc-to-markdown: 4.0.1
   mocha: 7.1.0
   typescript: 3.8.3
-  vet: 2.6.0
-lockfileVersion: 5.1
+lockfileVersion: 5.2
 packages:
   /@babel/code-frame/7.8.3:
     dependencies:
@@ -1528,6 +1529,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+  /sequences/2.3.1:
+    dev: false
+    resolution:
+      integrity: sha512-jAdZEapwWYx8bXtMuxGiEzg+yQVO0rlPYSh4CGvc0tFeMl0aLcVM9drzOvWOZTLz6cwPx4JuGEFciKV0REFCeQ==
   /set-blocking/2.0.0:
     dev: true
     resolution:
@@ -1820,10 +1825,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-KY9Frmirql91X2Qgjry0Wd4Y+YTdrdZheS8TFwvkbLWf/G5KNJDCh6pKL5OZctEW4+0Baa5idK2ZQuELRwPznQ==
-  /vet/2.6.0:
-    dev: true
+  /vet/4.3.1:
+    dev: false
     resolution:
-      integrity: sha512-Aw6qKRwPss9TtPGYMz0xPHw4+GoGvZN3v1Q8+olIA2G021/uNKvXKx6spdzlj9wJCQsvepPAbVxuEjQ6HOupJw==
+      integrity: sha512-CL62ZQ4RwCICUzlXlNTw1Nn0rb4V5n0McHvsA3z1JOs2sgLUKIrTKL73LBF4Y9rXuzKPt/m+z0+HQgYLziWIHA==
   /walk-back/2.0.1:
     dev: true
     engines:
@@ -1946,5 +1951,6 @@ specifiers:
   handlebars-helper-import: ^2.4.0
   jsdoc-to-markdown: ^4.0.1
   mocha: ^7.1.0
+  sequences: ^2.3.1
   typescript: ^3.5.3
-  vet: ^2.6.0
+  vet: 4.3.1
