@@ -1,6 +1,6 @@
 {
   "name": "sqlbars",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "A customized Handlebars instance for generating SQL",
   "main": "index.js",
   "scripts": {},

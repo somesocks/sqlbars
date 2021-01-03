@@ -8,6 +8,7 @@ import sqlLimit from './sql-limit';
 import sqlList from './sql-list';
 import sqlOffset from './sql-offset';
 import sqlOrder from './sql-order';
+import sqlUpdate from './sql-update';
 declare const helpers: {
     and: typeof and;
     or: typeof or;
@@ -19,5 +20,6 @@ declare const helpers: {
     'sql-list': typeof sqlList;
     'sql-offset': typeof sqlOffset;
     'sql-order': typeof sqlOrder;
+    'sql-update': typeof sqlUpdate;
 };
 export default helpers;

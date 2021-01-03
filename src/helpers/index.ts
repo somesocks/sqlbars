@@ -11,6 +11,7 @@ import sqlLimit from './sql-limit';
 import sqlList from './sql-list';
 import sqlOffset from './sql-offset';
 import sqlOrder from './sql-order';
+import sqlUpdate from './sql-update';
 
 const helpers = {
 	'and': and,
@@ -24,6 +25,7 @@ const helpers = {
 	'sql-list': sqlList,
 	'sql-offset': sqlOffset,
 	'sql-order': sqlOrder,
+	'sql-update': sqlUpdate,
 };
 
 export default helpers;

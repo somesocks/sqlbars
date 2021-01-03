@@ -17,7 +17,7 @@ import ToArray from 'sequences/ToArray';
 import sql from './sql';
 import sqlID from './sql-id';
 
-function sqlInsert(this : any) {
+function sqlUpdate(this : any) {
 	// console.log('sqlInsert arguments', arguments.length, arguments);
 
 	let table : string;
@@ -42,36 +42,24 @@ function sqlInsert(this : any) {
 	isString.assert(table);
 	isArray.assert(rows);
 
-	const schema = FromObject(rows[0])
-		.pipe(Map, ({ key, value }) => key)
-		.pipe(Sort)
-		.pipe(ToArray)
-		.read<any[]>();
-
-	// console.log('sqlInsert schema', schema);
-
-	const tableToken = sqlID(table, undefined); 
-
-	const schemaToken = FromArray(schema)
-		.pipe(Map, (id) => sqlID(id, undefined).toString())
-		.pipe(Concat, ', ')
-		.read();
-
-	const buildValueToken = (value) => Join(From(value), FromArray(schema))
-		.pipe(Map, ([ value, token ]) => value[token])
-		.pipe(Map, (value) => sql(value, undefined).toString())
-		.pipe(Concat, ', ')
-		.pipe(Map, (val) => `(${val})`)
-		.read<string>();
-
-	const valuesToken = FromArray(rows)
-		.pipe(Map, buildValueToken)
+	const buildSetClause = (set) => FromObject(set)
+		.pipe(Map,({ key, value }) => `${sqlID(key, undefined).toString()} = ${sql(value, undefined).toString()}`)
 		.pipe(Concat, ', ')
 		.read<string>();
 
-	const res = `INSERT INTO ${tableToken.toString()} (${schemaToken}) VALUES ${valuesToken};`;
+	const buildWhereClause = (where) => FromObject(where)
+		.pipe(Map,({ key, value }) => `${sqlID(key, undefined).toString()} = ${sql(value, undefined).toString()}`)
+		.pipe(Concat, ' AND ')
+		.read<string>();
+
+	const buildUpdateStatement = (table, row) => `UPDATE ${sqlID(table, undefined).toString()} SET ${buildSetClause(row.set)} WHERE ${buildWhereClause(row.where)};`	
+
+	const res = FromArray(rows)
+		.pipe(Map, (row) => buildUpdateStatement(table, row))
+		.pipe(Concat, '\n')
+		.read<string>();
 
 	return new Handlebars.SafeString(res);
 }
 
-export default sqlInsert;
+export default sqlUpdate;

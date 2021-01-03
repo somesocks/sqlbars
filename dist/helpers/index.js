@@ -13,6 +13,7 @@ var sql_limit_1 = __importDefault(require("./sql-limit"));
 var sql_list_1 = __importDefault(require("./sql-list"));
 var sql_offset_1 = __importDefault(require("./sql-offset"));
 var sql_order_1 = __importDefault(require("./sql-order"));
+var sql_update_1 = __importDefault(require("./sql-update"));
 var helpers = {
     'and': and_1.default,
     'or': or_1.default,
@@ -24,5 +25,6 @@ var helpers = {
     'sql-list': sql_list_1.default,
     'sql-offset': sql_offset_1.default,
     'sql-order': sql_order_1.default,
+    'sql-update': sql_update_1.default,
 };
 exports.default = helpers;

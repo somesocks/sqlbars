@@ -9,18 +9,23 @@ var __1 = __importDefault(require("../../"));
 var Test = AssertionTest_1.default()
     .describe('can escape array (as multiple values)')
     .setup(function (next) { return next(null, {
-    template: __1.default.compile('{{sql-insert val}}'),
+    template: __1.default.compile('{{sql-update val}}'),
     data: {
         val: {
             table: 'Table',
             rows: [
-                { foo: 1, bar: 2 },
-                { foo: true, bar: null },
-                { foo: 'two', bar: new Date(0) },
+                {
+                    set: { foo: 1, bar: 2 },
+                    where: { foo: 0 },
+                },
+                {
+                    set: { foo: 1, bar: 2 },
+                    where: { foo: true, bar: null },
+                }
             ],
         },
     },
-    expected: 'INSERT INTO `Table` (`bar`, `foo`) VALUES (2, 1), (NULL, TRUE), (\'1970-01-01 00:00:00.000\', \'two\');',
+    expected: 'UPDATE `Table` SET `foo` = 1, `bar` = 2 WHERE `foo` = 0;\nUPDATE `Table` SET `foo` = 1, `bar` = 2 WHERE `foo` = TRUE AND `bar` = NULL;',
 }); })
     .prepare(function (next, setup) { return next(null, setup); })
     .execute(function (next, _a) {

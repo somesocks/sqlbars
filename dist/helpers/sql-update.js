@@ -9,14 +9,10 @@ var isArray_1 = __importDefault(require("vet/arrays/isArray"));
 var Concat_1 = __importDefault(require("sequences/Concat"));
 var FromArray_1 = __importDefault(require("sequences/FromArray"));
 var FromObject_1 = __importDefault(require("sequences/FromObject"));
-var From_1 = __importDefault(require("sequences/From"));
-var Join_1 = __importDefault(require("sequences/Join"));
 var Map_1 = __importDefault(require("sequences/Map"));
-var Sort_1 = __importDefault(require("sequences/Sort"));
-var ToArray_1 = __importDefault(require("sequences/ToArray"));
 var sql_1 = __importDefault(require("./sql"));
 var sql_id_1 = __importDefault(require("./sql-id"));
-function sqlInsert() {
+function sqlUpdate() {
     // console.log('sqlInsert arguments', arguments.length, arguments);
     var table;
     var rows;
@@ -37,34 +33,25 @@ function sqlInsert() {
     }
     isString_1.default.assert(table);
     isArray_1.default.assert(rows);
-    var schema = FromObject_1.default(rows[0])
+    var buildSetClause = function (set) { return FromObject_1.default(set)
         .pipe(Map_1.default, function (_a) {
         var key = _a.key, value = _a.value;
-        return key;
+        return sql_id_1.default(key, undefined).toString() + " = " + sql_1.default(value, undefined).toString();
     })
-        .pipe(Sort_1.default)
-        .pipe(ToArray_1.default)
-        .read();
-    // console.log('sqlInsert schema', schema);
-    var tableToken = sql_id_1.default(table, undefined);
-    var schemaToken = FromArray_1.default(schema)
-        .pipe(Map_1.default, function (id) { return sql_id_1.default(id, undefined).toString(); })
         .pipe(Concat_1.default, ', ')
-        .read();
-    var buildValueToken = function (value) { return Join_1.default(From_1.default(value), FromArray_1.default(schema))
-        .pipe(Map_1.default, function (_a) {
-        var value = _a[0], token = _a[1];
-        return value[token];
-    })
-        .pipe(Map_1.default, function (value) { return sql_1.default(value, undefined).toString(); })
-        .pipe(Concat_1.default, ', ')
-        .pipe(Map_1.default, function (val) { return "(" + val + ")"; })
         .read(); };
-    var valuesToken = FromArray_1.default(rows)
-        .pipe(Map_1.default, buildValueToken)
-        .pipe(Concat_1.default, ', ')
+    var buildWhereClause = function (where) { return FromObject_1.default(where)
+        .pipe(Map_1.default, function (_a) {
+        var key = _a.key, value = _a.value;
+        return sql_id_1.default(key, undefined).toString() + " = " + sql_1.default(value, undefined).toString();
+    })
+        .pipe(Concat_1.default, ' AND ')
+        .read(); };
+    var buildUpdateStatement = function (table, row) { return "UPDATE " + sql_id_1.default(table, undefined).toString() + " SET " + buildSetClause(row.set) + " WHERE " + buildWhereClause(row.where) + ";"; };
+    var res = FromArray_1.default(rows)
+        .pipe(Map_1.default, function (row) { return buildUpdateStatement(table, row); })
+        .pipe(Concat_1.default, '\n')
         .read();
-    var res = "INSERT INTO " + tableToken.toString() + " (" + schemaToken + ") VALUES " + valuesToken + ";";
     return new handlebars_1.default.SafeString(res);
 }
-exports.default = sqlInsert;
+exports.default = sqlUpdate;
