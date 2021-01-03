@@ -7,15 +7,16 @@ var handlebars_1 = __importDefault(require("handlebars"));
 var ESCAPE_REGEX = /`/g;
 function _escape(val) {
     var type = typeof val;
+    var _a = this.sql, delimiterID = _a.delimiterID, escapeID = _a.escapeID;
     switch (type) {
         case 'string': {
-            return new handlebars_1.default.SafeString('`' + val.replace(ESCAPE_REGEX, '``') + '`');
+            return new handlebars_1.default.SafeString(delimiterID + escapeID(val) + delimiterID);
         }
         case 'object': {
             if (Array.isArray(val)) {
                 var sql = '';
                 for (var i = 0; i < val.length; i++) {
-                    sql += (i === 0 ? '' : '.') + _escape(val[i]);
+                    sql += (i === 0 ? '' : '.') + _escape.call(this, val[i]);
                 }
                 return new handlebars_1.default.SafeString(sql);
             }

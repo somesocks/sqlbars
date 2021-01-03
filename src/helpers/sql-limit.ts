@@ -1,9 +1,11 @@
 
 import Handlebars from 'handlebars';
 
+import { TSQLBars } from '../sqlbars';
+
 const MAX_LIMIT = 999999999999;
 
-function sqlLimit(this : any, limit : any) {
+function sqlLimit(this : TSQLBars, limit : any) {
 	switch (typeof limit) {
 		case 'undefined' : {
 			return MAX_LIMIT;

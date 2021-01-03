@@ -17,6 +17,7 @@ var ToArray_1 = __importDefault(require("sequences/ToArray"));
 var sql_1 = __importDefault(require("./sql"));
 var sql_id_1 = __importDefault(require("./sql-id"));
 function sqlInsert() {
+    var sqlbars = this;
     // console.log('sqlInsert arguments', arguments.length, arguments);
     var table;
     var rows;
@@ -46,9 +47,9 @@ function sqlInsert() {
         .pipe(ToArray_1.default)
         .read();
     // console.log('sqlInsert schema', schema);
-    var tableToken = sql_id_1.default(table, undefined);
+    var tableToken = sql_id_1.default.call(sqlbars, table, undefined);
     var schemaToken = FromArray_1.default(schema)
-        .pipe(Map_1.default, function (id) { return sql_id_1.default(id, undefined).toString(); })
+        .pipe(Map_1.default, function (id) { return sql_id_1.default.call(sqlbars, id, undefined).toString(); })
         .pipe(Concat_1.default, ', ')
         .read();
     var buildValueToken = function (value) { return Join_1.default(From_1.default(value), FromArray_1.default(schema))
@@ -56,7 +57,7 @@ function sqlInsert() {
         var value = _a[0], token = _a[1];
         return value[token];
     })
-        .pipe(Map_1.default, function (value) { return sql_1.default(value, undefined).toString(); })
+        .pipe(Map_1.default, function (value) { return sql_1.default.call(sqlbars, value, undefined).toString(); })
         .pipe(Concat_1.default, ', ')
         .pipe(Map_1.default, function (val) { return "(" + val + ")"; })
         .read(); };

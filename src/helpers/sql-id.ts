@@ -1,18 +1,21 @@
 
 import Handlebars from 'handlebars';
 
+import { TSQLBars } from '../sqlbars';
+
 const ESCAPE_REGEX = /`/g;
 
-function _escape(val) {
+function _escape(this : TSQLBars, val) {
 	const type = typeof val;
+	const { delimiterID, escapeID } = this.sql;
 
 	switch (type) {
-		case 'string': { return new Handlebars.SafeString('`' + val.replace(ESCAPE_REGEX, '``') + '`'); }
+		case 'string': { return new Handlebars.SafeString(delimiterID + escapeID(val) + delimiterID); }
 		case 'object' : {
 			if (Array.isArray(val)) {
 				let sql = '';
 				for (let i=0; i<val.length;i++) {
-					sql += (i === 0 ? '' : '.') + _escape(val[i])
+					sql += (i === 0 ? '' : '.') + _escape.call(this, val[i])
 				}
 				return new Handlebars.SafeString(sql);
 			} else {
@@ -23,7 +26,7 @@ function _escape(val) {
 	}
 }
 
-function sqlID(this : any, ...args : any[]) {
+function sqlID(this : TSQLBars, ...args : any[]) {
 	switch (arguments.length) {
 		case 0:
 		case 1: {

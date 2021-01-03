@@ -1,6 +1,8 @@
 
 import Handlebars from 'handlebars';
 
+import { TSQLBars } from '../sqlbars';
+
 import { toISO9075String } from '../utils/dates';
 
 const ESCAPE_REGEX = /[\0\b\t\n\r\x1a\"\'\\]/g;
@@ -19,7 +21,7 @@ const ESCAPE_MAP = {
 
 function escapeChar(char) { return ESCAPE_MAP[char]; }
 
-function _escape(val) {
+function _escape(this : TSQLBars, val) {
 	const type = typeof val;
 
 	switch (type) {
@@ -33,7 +35,7 @@ function _escape(val) {
 			} else if (Array.isArray(val)) {
 				let sql = '(';
 				for (let i=0; i<val.length;i++) {
-					sql += (i === 0 ? '' : ', ') + _escape(val[i])
+					sql += (i === 0 ? '' : ', ') + _escape.call(this, val[i])
 				}
 				sql += ')';
 				return new Handlebars.SafeString(sql);
@@ -47,7 +49,7 @@ function _escape(val) {
 	}
 }
 
-function sql(this : any, ...args: any[]) {
+function sql(this : TSQLBars, ...args: any[]) {
 	switch (arguments.length) {
 		case 0:
 		case 1: {

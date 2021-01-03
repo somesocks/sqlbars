@@ -1,3 +1,4 @@
 import Handlebars from 'handlebars';
-declare function sqlInsert(this: any): Handlebars.SafeString;
+import { TSQLBars } from '../sqlbars';
+declare function sqlInsert(this: TSQLBars): Handlebars.SafeString;
 export default sqlInsert;

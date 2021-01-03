@@ -11,20 +11,20 @@ function _escape(val) {
         case 'string': {
             if (val[0] === '-') {
                 val = val.slice(1);
-                val = sql_id_1.default(val, null) + ' DESC';
+                val = sql_id_1.default.call(this, val, null) + ' DESC';
             }
             else if (val[0] === '+') {
                 val = val.slice(1);
-                val = sql_id_1.default(val, null) + ' ASC';
+                val = sql_id_1.default.call(this, val, null) + ' ASC';
             }
             else {
-                val = sql_id_1.default(val, null) + ' ASC';
+                val = sql_id_1.default.call(this, val, null) + ' ASC';
             }
             return val;
         }
         case 'object': {
             if (Array.isArray(val)) {
-                return val.map(_escape).join(', ');
+                return val.map(_escape, this).join(', ');
             }
             else {
                 throw new Error('{{sql-order}} cannot escape expression of type ' + type);
@@ -42,11 +42,11 @@ function sqlOrder() {
             throw new Error('unexpected number of arguments');
         }
         case 2: {
-            var res = _escape(arguments[0]);
+            var res = _escape.call(this, arguments[0]);
             return new handlebars_1.default.SafeString(res);
         }
         default: {
-            var res = _escape(Array.prototype.slice.call(arguments, 0, arguments.length - 1));
+            var res = _escape.call(this, Array.prototype.slice.call(arguments, 0, arguments.length - 1));
             return new handlebars_1.default.SafeString(res);
         }
     }

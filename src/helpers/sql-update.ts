@@ -14,10 +14,13 @@ import Map from 'sequences/Map';
 import Sort from 'sequences/Sort';
 import ToArray from 'sequences/ToArray';
 
+import { TSQLBars } from '../sqlbars';
+
 import sql from './sql';
 import sqlID from './sql-id';
 
-function sqlUpdate(this : any) {
+function sqlUpdate(this : TSQLBars) {
+	const sqlbars = this;
 	// console.log('sqlInsert arguments', arguments.length, arguments);
 
 	let table : string;
@@ -43,16 +46,16 @@ function sqlUpdate(this : any) {
 	isArray.assert(rows);
 
 	const buildSetClause = (set) => FromObject(set)
-		.pipe(Map,({ key, value }) => `${sqlID(key, undefined).toString()} = ${sql(value, undefined).toString()}`)
+		.pipe(Map,({ key, value }) => `${sqlID.call(sqlbars, key, undefined).toString()} = ${sql.call(sqlbars, value, undefined).toString()}`)
 		.pipe(Concat, ', ')
 		.read<string>();
 
 	const buildWhereClause = (where) => FromObject(where)
-		.pipe(Map,({ key, value }) => `${sqlID(key, undefined).toString()} = ${sql(value, undefined).toString()}`)
+		.pipe(Map,({ key, value }) => `${sqlID.call(sqlbars, key, undefined).toString()} = ${sql.call(sqlbars, value, undefined).toString()}`)
 		.pipe(Concat, ' AND ')
 		.read<string>();
 
-	const buildUpdateStatement = (table, row) => `UPDATE ${sqlID(table, undefined).toString()} SET ${buildSetClause(row.set)} WHERE ${buildWhereClause(row.where)};`	
+	const buildUpdateStatement = (table, row) => `UPDATE ${sqlID.call(sqlbars, table, undefined).toString()} SET ${buildSetClause(row.set)} WHERE ${buildWhereClause(row.where)};`	
 
 	const res = FromArray(rows)
 		.pipe(Map, (row) => buildUpdateStatement(table, row))

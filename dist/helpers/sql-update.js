@@ -13,6 +13,7 @@ var Map_1 = __importDefault(require("sequences/Map"));
 var sql_1 = __importDefault(require("./sql"));
 var sql_id_1 = __importDefault(require("./sql-id"));
 function sqlUpdate() {
+    var sqlbars = this;
     // console.log('sqlInsert arguments', arguments.length, arguments);
     var table;
     var rows;
@@ -36,18 +37,18 @@ function sqlUpdate() {
     var buildSetClause = function (set) { return FromObject_1.default(set)
         .pipe(Map_1.default, function (_a) {
         var key = _a.key, value = _a.value;
-        return sql_id_1.default(key, undefined).toString() + " = " + sql_1.default(value, undefined).toString();
+        return sql_id_1.default.call(sqlbars, key, undefined).toString() + " = " + sql_1.default.call(sqlbars, value, undefined).toString();
     })
         .pipe(Concat_1.default, ', ')
         .read(); };
     var buildWhereClause = function (where) { return FromObject_1.default(where)
         .pipe(Map_1.default, function (_a) {
         var key = _a.key, value = _a.value;
-        return sql_id_1.default(key, undefined).toString() + " = " + sql_1.default(value, undefined).toString();
+        return sql_id_1.default.call(sqlbars, key, undefined).toString() + " = " + sql_1.default.call(sqlbars, value, undefined).toString();
     })
         .pipe(Concat_1.default, ' AND ')
         .read(); };
-    var buildUpdateStatement = function (table, row) { return "UPDATE " + sql_id_1.default(table, undefined).toString() + " SET " + buildSetClause(row.set) + " WHERE " + buildWhereClause(row.where) + ";"; };
+    var buildUpdateStatement = function (table, row) { return "UPDATE " + sql_id_1.default.call(sqlbars, table, undefined).toString() + " SET " + buildSetClause(row.set) + " WHERE " + buildWhereClause(row.where) + ";"; };
     var res = FromArray_1.default(rows)
         .pipe(Map_1.default, function (row) { return buildUpdateStatement(table, row); })
         .pipe(Concat_1.default, '\n')

@@ -1,3 +1,4 @@
 import Handlebars from 'handlebars';
-declare function sqlList(this: any): Handlebars.SafeString;
+import { TSQLBars } from '../sqlbars';
+declare function sqlList(this: TSQLBars): Handlebars.SafeString;
 export default sqlList;

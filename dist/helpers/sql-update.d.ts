@@ -1,3 +1,4 @@
 import Handlebars from 'handlebars';
-declare function sqlUpdate(this: any): Handlebars.SafeString;
+import { TSQLBars } from '../sqlbars';
+declare function sqlUpdate(this: TSQLBars): Handlebars.SafeString;
 export default sqlUpdate;

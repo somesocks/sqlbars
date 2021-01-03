@@ -1,3 +1,4 @@
 import Handlebars from 'handlebars';
-declare function sqlID(this: any, ...args: any[]): Handlebars.SafeString;
+import { TSQLBars } from '../sqlbars';
+declare function sqlID(this: TSQLBars, ...args: any[]): Handlebars.SafeString;
 export default sqlID;

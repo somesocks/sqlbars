@@ -1,3 +1,4 @@
 import Handlebars from 'handlebars';
-declare function sqlOrder(this: any): Handlebars.SafeString;
+import { TSQLBars } from '../sqlbars';
+declare function sqlOrder(this: TSQLBars): Handlebars.SafeString;
 export default sqlOrder;

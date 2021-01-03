@@ -2,6 +2,7 @@
 
 import Handlebars from 'handlebars';
 
+
 import isString from 'vet/strings/isString';
 import isArray from 'vet/arrays/isArray';
 
@@ -14,10 +15,13 @@ import Map from 'sequences/Map';
 import Sort from 'sequences/Sort';
 import ToArray from 'sequences/ToArray';
 
+import { TSQLBars } from '../sqlbars';
+
 import sql from './sql';
 import sqlID from './sql-id';
 
-function sqlInsert(this : any) {
+function sqlInsert(this : TSQLBars) {
+	const sqlbars = this;
 	// console.log('sqlInsert arguments', arguments.length, arguments);
 
 	let table : string;
@@ -50,16 +54,16 @@ function sqlInsert(this : any) {
 
 	// console.log('sqlInsert schema', schema);
 
-	const tableToken = sqlID(table, undefined); 
+	const tableToken = sqlID.call(sqlbars, table, undefined); 
 
 	const schemaToken = FromArray(schema)
-		.pipe(Map, (id) => sqlID(id, undefined).toString())
+		.pipe(Map, (id) => sqlID.call(sqlbars, id, undefined).toString())
 		.pipe(Concat, ', ')
 		.read();
 
 	const buildValueToken = (value) => Join(From(value), FromArray(schema))
 		.pipe(Map, ([ value, token ]) => value[token])
-		.pipe(Map, (value) => sql(value, undefined).toString())
+		.pipe(Map, (value) => sql.call(sqlbars, value, undefined).toString())
 		.pipe(Concat, ', ')
 		.pipe(Map, (val) => `(${val})`)
 		.read<string>();

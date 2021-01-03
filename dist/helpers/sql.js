@@ -40,7 +40,7 @@ function _escape(val) {
             else if (Array.isArray(val)) {
                 var sql_1 = '(';
                 for (var i = 0; i < val.length; i++) {
-                    sql_1 += (i === 0 ? '' : ', ') + _escape(val[i]);
+                    sql_1 += (i === 0 ? '' : ', ') + _escape.call(this, val[i]);
                 }
                 sql_1 += ')';
                 return new handlebars_1.default.SafeString(sql_1);

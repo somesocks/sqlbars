@@ -1,3 +1,2 @@
-import Handlebars from 'handlebars';
-declare const SQLBars: typeof Handlebars;
-export default SQLBars;
+import MYSQLBars from './mysql';
+export default MYSQLBars;

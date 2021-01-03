@@ -1,7 +1,9 @@
 
 import Handlebars from 'handlebars';
 
-function sqlOffset(this : any, offset : any) {
+import { TSQLBars } from '../sqlbars';
+
+function sqlOffset(this : TSQLBars, offset : any) {
 	switch (typeof offset) {
 		case 'undefined' : {
 			return 0;
