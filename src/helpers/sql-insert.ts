@@ -73,7 +73,7 @@ function sqlInsert(this : TSQLBars) {
 		.pipe(Concat, ', ')
 		.read<string>();
 
-	const res = `INSERT INTO ${tableToken.toString()} (${schemaToken}) VALUES ${valuesToken};`;
+	const res = `insert into ${tableToken.toString()} (${schemaToken}) values ${valuesToken};`;
 
 	return new Handlebars.SafeString(res);
 }

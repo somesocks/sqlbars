@@ -14,7 +14,7 @@ const Test : any = AssertionTest()
 				data: {
 					val: '-foo',
 				},
-				expected: '`foo` DESC',
+				expected: '`foo` desc',
 			}
 		)
 	)

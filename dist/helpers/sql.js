@@ -22,10 +22,10 @@ function _escape(val) {
     var type = typeof val;
     switch (type) {
         case 'undefined': {
-            return 'NULL';
+            return 'null';
         }
         case 'boolean': {
-            return (val) ? 'TRUE' : 'FALSE';
+            return (val) ? 'true' : 'FALSE';
         }
         case 'number': {
             return '' + val;
@@ -35,7 +35,7 @@ function _escape(val) {
         }
         case 'object': {
             if (val == null) {
-                return 'NULL';
+                return 'null';
             }
             else if (Array.isArray(val)) {
                 var sql_1 = '(';

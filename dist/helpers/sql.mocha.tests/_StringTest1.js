@@ -15,7 +15,7 @@ var Test = AssertionTest_1.default()
         val2: true,
         val3: [true, true],
     },
-    expected: '(TRUE, \'two\', (TRUE, TRUE))',
+    expected: '(true, \'two\', (true, true))',
 }); })
     .prepare(function (next, setup) { return next(null, setup); })
     .execute(function (next, _a) {

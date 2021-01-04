@@ -14,7 +14,7 @@ var Test = AssertionTest_1.default()
         val1: true,
         val2: true,
     },
-    expected: '(TRUE, TRUE)',
+    expected: '(true, true)',
 }); })
     .prepare(function (next, setup) { return next(null, setup); })
     .execute(function (next, _a) {

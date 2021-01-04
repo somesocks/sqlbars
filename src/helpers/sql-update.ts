@@ -52,10 +52,10 @@ function sqlUpdate(this : TSQLBars) {
 
 	const buildWhereClause = (where) => FromObject(where)
 		.pipe(Map,({ key, value }) => `${sqlID.call(sqlbars, key, undefined).toString()} = ${sql.call(sqlbars, value, undefined).toString()}`)
-		.pipe(Concat, ' AND ')
+		.pipe(Concat, ' and ')
 		.read<string>();
 
-	const buildUpdateStatement = (table, row) => `UPDATE ${sqlID.call(sqlbars, table, undefined).toString()} SET ${buildSetClause(row.set)} WHERE ${buildWhereClause(row.where)};`	
+	const buildUpdateStatement = (table, row) => `update ${sqlID.call(sqlbars, table, undefined).toString()} set ${buildSetClause(row.set)} where ${buildWhereClause(row.where)};`	
 
 	const res = FromArray(rows)
 		.pipe(Map, (row) => buildUpdateStatement(table, row))

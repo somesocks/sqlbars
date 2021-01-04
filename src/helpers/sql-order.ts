@@ -12,12 +12,12 @@ function _escape(this : TSQLBars, val) {
 		case 'string': {
 			if (val[0] === '-') {
 				val = val.slice(1);
-				val = sqlID.call(this, val, null) + ' DESC';
+				val = sqlID.call(this, val, null) + ' desc';
 			} else if (val[0] === '+') {
 				val = val.slice(1);
-				val = sqlID.call(this, val, null) + ' ASC';
+				val = sqlID.call(this, val, null) + ' asc';
 			} else {
-				val = sqlID.call(this, val, null) + ' ASC';
+				val = sqlID.call(this, val, null) + ' asc';
 			}
 			return val;
 		}

@@ -46,9 +46,9 @@ function sqlUpdate() {
         var key = _a.key, value = _a.value;
         return sql_id_1.default.call(sqlbars, key, undefined).toString() + " = " + sql_1.default.call(sqlbars, value, undefined).toString();
     })
-        .pipe(Concat_1.default, ' AND ')
+        .pipe(Concat_1.default, ' and ')
         .read(); };
-    var buildUpdateStatement = function (table, row) { return "UPDATE " + sql_id_1.default.call(sqlbars, table, undefined).toString() + " SET " + buildSetClause(row.set) + " WHERE " + buildWhereClause(row.where) + ";"; };
+    var buildUpdateStatement = function (table, row) { return "update " + sql_id_1.default.call(sqlbars, table, undefined).toString() + " set " + buildSetClause(row.set) + " where " + buildWhereClause(row.where) + ";"; };
     var res = FromArray_1.default(rows)
         .pipe(Map_1.default, function (row) { return buildUpdateStatement(table, row); })
         .pipe(Concat_1.default, '\n')

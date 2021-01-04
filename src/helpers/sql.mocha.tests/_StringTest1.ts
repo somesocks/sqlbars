@@ -16,7 +16,7 @@ const Test : any = AssertionTest()
 					val2: true,
 					val3: [ true, true ],
 				},
-				expected: '(TRUE, \'two\', (TRUE, TRUE))',
+				expected: '(true, \'two\', (true, true))',
 			}
 		)
 	)

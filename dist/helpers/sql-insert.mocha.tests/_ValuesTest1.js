@@ -20,7 +20,7 @@ var Test = AssertionTest_1.default()
             ],
         },
     },
-    expected: 'INSERT INTO `Table` (`bar`, `foo`) VALUES (2, 1), (NULL, TRUE), (\'1970-01-01 00:00:00.000\', \'two\');',
+    expected: 'insert into `Table` (`bar`, `foo`) values (2, 1), (null, true), (\'1970-01-01 00:00:00.000\', \'two\');',
 }); })
     .prepare(function (next, setup) { return next(null, setup); })
     .execute(function (next, _a) {

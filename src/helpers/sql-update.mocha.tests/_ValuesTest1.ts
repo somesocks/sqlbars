@@ -26,7 +26,7 @@ const Test : any = AssertionTest()
 						],
 					},
 				},
-				expected: 'UPDATE `Table` SET `foo` = 1, `bar` = 2 WHERE `foo` = 0;\nUPDATE `Table` SET `foo` = 1, `bar` = 2 WHERE `foo` = TRUE AND `bar` = NULL;',
+				expected: 'update `Table` set `foo` = 1, `bar` = 2 where `foo` = 0;\nupdate `Table` set `foo` = 1, `bar` = 2 where `foo` = true and `bar` = null;',
 			}
 		)
 	)

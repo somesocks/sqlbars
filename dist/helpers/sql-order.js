@@ -11,14 +11,14 @@ function _escape(val) {
         case 'string': {
             if (val[0] === '-') {
                 val = val.slice(1);
-                val = sql_id_1.default.call(this, val, null) + ' DESC';
+                val = sql_id_1.default.call(this, val, null) + ' desc';
             }
             else if (val[0] === '+') {
                 val = val.slice(1);
-                val = sql_id_1.default.call(this, val, null) + ' ASC';
+                val = sql_id_1.default.call(this, val, null) + ' asc';
             }
             else {
-                val = sql_id_1.default.call(this, val, null) + ' ASC';
+                val = sql_id_1.default.call(this, val, null) + ' asc';
             }
             return val;
         }

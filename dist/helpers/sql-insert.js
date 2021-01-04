@@ -65,7 +65,7 @@ function sqlInsert() {
         .pipe(Map_1.default, buildValueToken)
         .pipe(Concat_1.default, ', ')
         .read();
-    var res = "INSERT INTO " + tableToken.toString() + " (" + schemaToken + ") VALUES " + valuesToken + ";";
+    var res = "insert into " + tableToken.toString() + " (" + schemaToken + ") values " + valuesToken + ";";
     return new handlebars_1.default.SafeString(res);
 }
 exports.default = sqlInsert;

@@ -25,13 +25,13 @@ function _escape(this : TSQLBars, val) {
 	const type = typeof val;
 
 	switch (type) {
-		case 'undefined': { return 'NULL'; }
-		case 'boolean': { return (val) ? 'TRUE' : 'FALSE'; }
+		case 'undefined': { return 'null'; }
+		case 'boolean': { return (val) ? 'true' : 'FALSE'; }
 		case 'number': { return ''+val; }
 		case 'string': { return new Handlebars.SafeString('\'' + val.replace(ESCAPE_REGEX, escapeChar) + '\''); }
 		case 'object' : {
 			if (val == null) {
-				return 'NULL';
+				return 'null';
 			} else if (Array.isArray(val)) {
 				let sql = '(';
 				for (let i=0; i<val.length;i++) {

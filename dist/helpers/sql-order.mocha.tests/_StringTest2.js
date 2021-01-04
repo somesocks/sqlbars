@@ -13,7 +13,7 @@ var Test = AssertionTest_1.default()
     data: {
         val: '+foo',
     },
-    expected: '`foo` ASC',
+    expected: '`foo` asc',
 }); })
     .prepare(function (next, setup) { return next(null, setup); })
     .execute(function (next, _a) {

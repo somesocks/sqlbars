@@ -1,10 +1,10 @@
-SELECT
+select
 	*
-FROM
+from
 	{{sql-id "foo"}}
-WHERE
+where
 	(1 = 1)
 	{{#if names}}
-	AND {{sql-id "names"}} IN {{sql names}}
+	and {{sql-id "names"}} in {{sql names}}
 	{{/if}}
 ;
